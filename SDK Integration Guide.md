@@ -22,10 +22,6 @@
 
 ## <a name="step1">Import the Mobile Ads SDK </a>
 
-**Cocoapods (preferred)**
-
-- Add the following line of code to the project of Podfile file : pod 'ApplinsSDK' 
-- Running a 'pod install' command
 
 **Manual download**
 
@@ -78,7 +74,7 @@
 ```
 
 * Under "Build Settings->Other Linker Flags" add: "-ObjC"
-* Initialize Applins SDK in your didFinishLaunchingWithOptions method.
+* Initialize Maticoo SDK in your didFinishLaunchingWithOptions method.
 
 ```
 #import <MaticooSDK/MaticooSDK.h>
@@ -90,7 +86,7 @@
     didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
 
   // Initialize Maticoo SDK
-  [[Applins shareSDK] initSDK:@"Your Slot ID"];
+  [[Maticoo shareSDK] initSDK:@"Your Slot ID"];
   return YES;
 }
 
@@ -325,7 +321,7 @@ Call this method before show ad
 ALSAdViewDelegate interfaces related to interstitial, for more detail please check ALSAdViewDelegate in ALSADMRAIDView.h
 //interstitial is ready, call mraidInterstitialShow to show it.
 - (void)ALSLoadInterstitialSuccessWithSlot:(NSString *)slot {
-	[[Applins shareSDK] showInterstitialAD];
+	[[Maticoo shareSDK] showInterstitialAD];
 }
 
 //error while request ads. (share the same error delegate interface with banner)
@@ -377,8 +373,8 @@ ALS Reward video is ready to play
 
 #RewardVideoDelegate delegate callback interface
 - (void)ALSRewardedVideoLoadSuccess {
-	if([[Applins shareSDK] isRewardedVideoReady])
-		[[Applins shareSDK] showRewardedVideo];
+	if([[Maticoo shareSDK] isRewardedVideoReady])
+		[[Maticoo shareSDK] showRewardedVideo];
 	NSLog(@"rewarded vidoe load success, call showRewardedVideo");
 }                       
 - (void)ALSRewardedVideoStart {
@@ -522,10 +518,10 @@ Sample Code
 #import <MaticooSDK/ALSSplashAdDelegate.h>
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
-	[[Applins shareSDK] preloadSplashAd:@"Your slot ID" delegate:self customAdView:ad isTest:NO];
+	[[Maticoo shareSDK] preloadSplashAd:@"Your slot ID" delegate:self customAdView:ad isTest:NO];
 }
 - (void)ALSSPlashAdSuccess {
-    	[[Applins shareSDK] splashlAdShow:self.window.rootViewController];
+    	[[Maticoo shareSDK] splashlAdShow:self.window.rootViewController];
 }
 ```
 
